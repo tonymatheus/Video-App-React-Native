@@ -19,6 +19,11 @@ export default class videoApp extends Component {
               fullscreen: !this.state.fullscreen,
             })
           }
+          onExitFullscreen={() => {
+            this.setState({
+              fullscreen: !this.state.fullscreen,
+            });
+          }}
           source={{uri: 'https://vjs.zencdn.net/v/oceans.mp4'}}
           navigator={this.props.navigator}
         />
