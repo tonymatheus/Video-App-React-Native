@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, ScrollView} from 'react-native';
 import VideoPlayer from 'react-native-video-controls';
 // import Video from 'react-native-video';
 
 export default class videoApp extends Component {
   state = {fullscreen: false};
+
   render() {
     return (
       <View style={styles.container}>
@@ -14,6 +15,7 @@ export default class videoApp extends Component {
           </View>
         )}
         <VideoPlayer
+          style={styles.playerVideo}
           onEnterFullscreen={() =>
             this.setState({
               fullscreen: !this.state.fullscreen,
@@ -26,7 +28,19 @@ export default class videoApp extends Component {
           }}
           source={{uri: 'https://vjs.zencdn.net/v/oceans.mp4'}}
           navigator={this.props.navigator}
+
         />
+        {(!this.state.fullscreen &&
+        <ScrollView>
+        <View >
+          <Text >
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been 
+          the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of 
+          type and scrambled it to make a type specimen book.
+          </Text>
+        </View>
+        </ScrollView>
+        )}
       </View>
     );
   }
@@ -50,4 +64,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingVertical: 10,
   },
+ 
+  
 });
